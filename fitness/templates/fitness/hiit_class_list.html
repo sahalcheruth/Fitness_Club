@@ -1,0 +1,335 @@
+{% extends 'fitness/base.html' %}
+{% load custom_filters %}
+
+{% load static %}
+{% block extra_styles %}
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+        
+    }
+</style>
+{% endblock %}
+
+
+{% block content %}
+
+<section class="yoga-section">
+<div class="container mt-5">
+  <h2 class="text-cente fw-bold mb-4" style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;text-align: center;font-size: 40px;">HIIT CLASS SCHEDULE</h2>
+  <p class="text-center text-muted mb-5" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Explore upcoming HIIT classes and book your slot before they fill up!</p>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover text-center align-middle shadow-sm" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
+      <thead class="table-dark">
+        <tr>
+          <th>Instructor</th>
+          <th>Date & Time (IST)</th>
+          <th>Vacancy</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for c in classes %}
+        <tr class="{% if c.available_slots > 0 %}table-success{% else %}table-danger{% endif %}">
+          <td>{{ c.instructor }}</td>
+          <td>{{ c.local_start_time|date:"Y-m-d h:i A" }}</td>
+          <td>
+            {% for i in c.total_vacancy|repeat %}
+              {% if i < c.booked_count %}
+                <span class="d-inline-block" style="width:20px; height:20px; background-color:#c2c200; margin:2px; border-radius:3px; border:1px solid #000;" title="Booked"></span>
+              {% else %}
+                <span class="d-inline-block" style="width:20px; height:20px; background-color:green; margin:2px; border-radius:3px; border:1px solid #000;" title="Available"></span>
+              {% endif %}
+            {% endfor %}
+          </td>
+          <td>
+            {% if c.available_slots > 0 %}
+              <a href="{% url 'book_hiit_class' c.id %}" class="btn btn-sm btn-outline-primary">Book Now</a>
+            {% else %}
+              <span class="badge bg-secondary px-3 py-2">Fully Booked</span>
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</section>
+
+
+<section>
+
+    <div class="content">
+        <h1 class="moves" data-aos="fade-in" data-aos-delay="200" data-aos-duration="1000">FIND WHAT MOVES YOU</h1>
+        <p class="submove" data-aos="fade-in" data-aos-delay="200" data-aos-duration="1000">Whether you're a complete beginner or you want to step up your routine,get the full studio experience at home with thousands of classes for body,mind and spirit.</p>
+
+    </div>
+
+<br>
+<br>
+<div class="container my-5">
+  <div class="row text-center">
+    
+    <!-- YOGA -->
+    <div class="col-md-3 col-sm-6 mb-4">
+      <img src="{% static 'fitness/images/yoga.png' %}" class="img-fluid rounded shadow custom-img" alt="Yoga">
+      <h5 class="mt-2">YOGA</h5>
+      <p class="description-box" data-aos="fade-in" data-aos-delay="200" data-aos-duration="1000">&nbsp;
+        Yoga is a holistic practice that connects the body, mind, and breath through movement and stillness.
+        It improves flexibility, strength, and balance while calming the mind and reducing stress.
+        With regular practice, yoga promotes inner peace and emotional stability.
+        Suitable for all ages, it encourages mindfulness and a deeper connection to oneself.
+        Yoga is not just exercise—it’s a journey to overall well-being.
+      </p>
+    </div>
+
+    <!-- SELF-CARE -->
+   <div class="col-md-3 col-sm-6 mb-4">
+      <img src="{% static 'fitness/images/self-care.png' %}" class="img-fluid rounded shadow custom-img" alt="Self Care">
+      <h5 class="mt-2">SELF-CARE</h5>
+      <p class="description-box" data-aos="fade-in" data-aos-delay="200" data-aos-duration="1000">&nbsp;
+        Self-care is the practice of taking time to nurture your mind, body, and spirit.
+        It means listening to your needs and honoring them without guilt.
+        Whether it's resting, exercising, meditating, or setting boundaries, self-care helps you stay balanced and healthy.
+        It’s not selfish—it’s essential for your well-being.
+        When you care for yourself, you can show up better for others and for life.
+      </p>
+    </div>
+
+    <!-- HIIT -->
+    <div class="col-md-3 col-sm-6 mb-4">
+      <img src="{% static 'fitness/images/HIIT_1.jpg' %}" class="img-fluid rounded shadow custom-img" alt="HIIT">
+      <h5 class="mt-2">HIIT</h5>
+      <p class="description-box" data-aos="fade-in" data-aos-delay="200" data-aos-duration="1000">&nbsp;
+        HIIT is a powerful workout method that alternates short bursts of intense activity with brief rest periods.
+        It’s designed to burn fat, build strength, and improve heart health in a short amount of time.
+        HIIT sessions are fast-paced and highly effective, often lasting just 20–30 minutes.
+        This training boosts your metabolism and keeps burning calories even after the workout ends.
+        It’s perfect for those who want maximum results in minimal time.
+      </p>
+    </div>
+
+    <!-- ZUMBA -->
+    <div class="col-md-3 col-sm-6 mb-4">
+      <img src="{% static 'fitness/images/zumba_3.jpg' %}" class="img-fluid rounded shadow custom-img" alt="Zumba">
+      <h5 class="mt-2">ZUMBA</h5>
+      <p class="description-box" data-aos="fade-in" data-aos-delay="200" data-aos-duration="1000">&nbsp;
+        Zumba is a fun and energetic dance workout inspired by Latin and international music.
+        It combines cardio, muscle conditioning, and dance moves to keep your body active and your mood lifted.
+        Zumba is perfect for all fitness levels and helps burn calories while having a great time.
+        The lively beats and group atmosphere make every session feel like a party.
+        It’s not just exercise—it’s joy in motion!
+      </p>
+    </div>
+
+  </div>
+</div>
+
+
+
+</section>
+
+
+
+<!-- intructors -->
+
+
+<section class="instructor-section">
+
+
+  
+    <div class="content">
+        <h1 class="moves" data-aos="fade-in" data-aos-delay="200" data-aos-duration="1000">MEET YOUR INSTRUCTORS</h1>
+        <p class="submove">We work the best 
+          so you can feel your best.Our team of top instructors will empower you
+           to reach all your fitness and wellness goals and enjoy the journey on the way</p>
+
+           <a href="#instructor_1"><button type="button" class="instro_btn">VIEW INSTRUCTORS</button></a>
+
+    </div>
+
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <h3 style="font-family:Arial, Helvetica, sans-serif;">← Scroll →</h3>
+
+
+    <div class="scroll-wrapper d-flex overflow-auto gap-4 pb-3">
+      <!-- Instructor Card 1 -->
+        
+      <div class="instructor-card text-center" id="instructor_1">
+        <img src="{% static 'fitness/images/candidate4.png' %}" class="img-fluid rounded-circle instructor-img" alt="Instructor 1" data-aos="fade-in" data-aos-delay="200" data-aos-duration="1000">
+        <h6 class="mt-2">Samuel Joney</h6>
+      </div>
+
+      <!-- Instructor Card 2 -->
+      <div class="instructor-card text-center">
+        <img src="{% static 'fitness/images/candidate3.png' %}" class="img-fluid rounded-circle instructor-img" alt="Instructor 2" data-aos="fade-in" data-aos-delay="200" data-aos-duration="1000">
+        <h6 class="mt-2">Aloce Angel</h6>
+      </div>
+
+
+      
+      <!-- Instructor Card 3-->
+      <div class="instructor-card text-center">
+        <img src="{% static 'fitness/images/candidate2.png' %}" class="img-fluid rounded-circle instructor-img" alt="Instructor 3" data-aos="fade-in" data-aos-delay="200" data-aos-duration="1000">
+        <h6 class="mt-2">Danny Avi</h6>
+      </div>
+
+      
+      <!-- Instructor Card 4 -->
+      <div class="instructor-card text-center">
+        <img src="{% static 'fitness/images/candidate1.png' %}" class="img-fluid rounded-circle instructor-img" alt="Instructor 4" data-aos="fade-in" data-aos-delay="200" data-aos-duration="1000">
+        <h6 class="mt-2">Benny Samuel</h6>
+      </div>
+      
+      <!-- Instructor Card 5 -->
+      <div class="instructor-card text-center">
+        <img src="{% static 'fitness/images/candidate4.png' %}" class="img-fluid rounded-circle instructor-img" alt="Instructor 5" data-aos="fade-in" data-aos-delay="200" data-aos-duration="1000">
+        <h6 class="mt-2">Peter England</h6>
+      </div>
+      
+      <!-- Instructor Card 6 -->
+      <div class="instructor-card text-center" id="book_class">
+        <img src="{% static 'fitness/images/candidate2.png' %}" class="img-fluid rounded-circle instructor-img" alt="Instructor 6" data-aos="fade-in" data-aos-delay="200" data-aos-duration="1000">
+        <h6 class="mt-2">Abraham Etty</h6>
+      </div>
+     
+    </div>
+    
+  </div>
+</section>
+
+<!-- classes booking -->
+
+<section>
+
+  <h3 class="class_head" data-aos="fade-in" data-aos-delay="200" data-aos-duration="1000">BOOK OUR UPCOMING CLASSES</h3>
+  <p class="class_head_dec" data-aos="fade-in" data-aos-delay="200" data-aos-duration="1000">Ready to take the next step in your wellness journey? Our fitness classes—HIIT, Zumba,
+     and Yoga—offer something for everyone.</p>
+  <div class="container my-5">
+  <div class="row text-center">
+    
+    <div class="col-md-4 mb-4">
+      <img src="{% static 'fitness/images/yoga.png' %}" class="img-fluid rounded shadow custom-img" alt="Image 1">
+      <a href="{% url 'class_list' %}"><button type="button" class="btn_classes_booking">YOGA</button></a>
+    </div>
+
+    <div class="col-md-4 mb-4">
+      <img src="{% static 'fitness/images/HIIT_1.jpg' %}" class="img-fluid rounded shadow custom-img" alt="Image 3">
+      <a href="{% url 'hiit_class_list' %}"><button type="button" class="btn_classes_booking">HIIT</button></a>
+    </div>
+
+
+    <div class="col-md-4 mb-4">
+      <img src="{% static 'fitness/images/zumba_3.jpg' %}" class="img-fluid rounded shadow custom-img" alt="Image 2">
+      <a href="{% url 'zumba_class_list' %}"><button type="button" class="btn_classes_booking">ZUMBA</button></a>
+    </div>
+
+
+  </div>
+</div>
+
+
+</section>
+
+
+
+<section>
+  <div class="">
+    <img class="wellness_img" src="{% static 'fitness/images/world_class.png' %}"  alt="Instructor 2">
+<div class="container wellness_dec">
+    <h1 data-aos="fade-in" data-aos-delay="200" data-aos-duration="1000">WORLD-CLASS WELLNESS.
+      <br>WHEREVER YOU ARE.
+    </h1>
+    <p>Take your favorite classes at home,while travelling,or outdoors.<br>Download classes on the app for pratice that moves with you</p></div>
+    <img class="wellness_img_two" src="{% static 'fitness/images/apple_logo.png' %}"  alt="Instructor 2">
+  </div>
+</section>
+
+
+
+<section class="bottom_img">
+  <div class="container-fluid p-0 mt-4">
+  <img src="{% static 'fitness/images/bottom_img.jpg' %}" class="img-fluid w-100" alt="Full Width Banner">
+
+  <div class="Card freetrail" data-aos="fade-in" data-aos-delay="200" data-aos-duration="1000">
+    <div class="sub_trail">
+    <h1>TRANSFORM<br> YOUR LIFE IN 14 <br>DAYS</h1>
+    <p>Get started today with free access to thousands of <br>fitness and wellness classes</p>
+    <button type="button">START YOUR FREE TRIAL</button>
+  </div>
+  </div>
+</div>
+
+</section>
+<!-- footer area -->
+
+<section class="footer_area">
+  <footer>
+    
+ <div class="social-icons text-center my-4">
+  <h4 style="font-family: 'Courier New', Courier, monospace;font-size: 23px;">FOLLOW US</h4>
+  <a href="https://www.instagram.com/" target="_blank" class="mx-2 text-dark fs-1">
+    <i class="fab fa-instagram"></i>
+  </a>
+  <a href="https://www.facebook.com/" target="_blank" class="mx-2 text-dark fs-1">
+    <i class="fab fa-facebook"></i>
+  </a>
+  <a href="https://www.tiktok.com/" target="_blank" class="mx-2 text-dark fs-1">
+    <i class="fab fa-tiktok"></i>
+  </a>
+</div>
+<hr>
+
+<div class="footer_moveway">
+  <div class="sub_footer_moveaway">
+    <h3 style="font-size: 40px;"><span style="color: rgb(0, 95, 33);">mOve</span>Way</h3>
+
+    <p>Download the <strong>mOveWay app</strong>  to take <br>classes offline and practice anytime,<br>anywhere.</p>
+
+    <img class="" src="{% static 'fitness/images/apple_logo.png' %}"  alt="Instructor 2" width="180px">
+  </div>
+</div>
+
+
+
+<div>
+  <div class="footer_links">
+<ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-5 d-flex flex-row">
+  <li class="nav-item mx-3">
+    <a class="nav-link" href="{% url 'home' %}"><span class="nav-link2">HOME</span></a>
+  </li>
+  <li class="nav-item mx-3">
+    <a class="nav-link" href="{% url 'class_list' %}"><span class="nav-link2">YOGA</span></a>
+  </li>
+  <li class="nav-item mx-3">
+    <a class="nav-link" href="{% url 'zumba_class_list' %}"><span class="nav-link2">ZUMBA</span></a>
+  </li>
+  <li class="nav-item mx-3">
+    <a class="nav-link" href="{% url 'hiit_class_list' %}"><span class="nav-link2">HIIT</span></a>
+  </li>
+  <li class="nav-item mx-3">
+    <a class="nav-link" href="#instructor_1"><span class="nav-link2">INSTRUCTORS</span></a>
+  </li>
+</ul>
+
+  </div>
+</div>
+
+  <div class="container">
+    <p class="mb-0">&copy; 2025 moveWay. All Rights Reserved.</p>
+    
+  </div>
+  </footer>
+</section>
+
+{% endblock %}

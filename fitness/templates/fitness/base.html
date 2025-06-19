@@ -1,0 +1,97 @@
+{% load custom_filters %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>{% block title %}moveway{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- AOS CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+   
+    {% block extra_styles %}{% endblock %}
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+   <link rel="stylesheet" href="{% static 'fitness/css/style.css' %}">
+
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        body {
+            padding-top: 70px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-white fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand ms-5" href="#">
+  <p class="main_logo animate-logo">
+    <span class="logo-highlight">mOve</span>Way
+  </p>
+</a>
+
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarContent">
+                {% if user.is_authenticated %}
+                <ul class="navbar-nav me-auto mb-8 mb-lg-0 ms-5">
+                    <li class="nav-item mx-3"><a class="nav-link"href="{% url 'home' %}"><p class="nav-link2">HOME</p></a></li>
+                    <li class="nav-item mx-3"><a class="nav-link"href="{% url 'class_list' %}"><p class="nav-link2">YOGA</p></a></li>
+                    <li class="nav-item mx-3"><a class="nav-link" href="{% url 'zumba_class_list' %}"><p class="nav-link2">ZUMBA</p></a></li>
+                    <li class="nav-item mx-3"><a class="nav-link" href="{% url 'hiit_class_list' %}"><p class="nav-link2">HIIT</p></a></li>
+                    <li class="nav-item mx-3"><a class="nav-link" href="#instructor_1"><p class="nav-link2">INSTRUCTORS</p></a></li>
+                </ul>
+                <!-- <span class="navbar-text me-3 text-black">Hello, {{ user.username }}</span> -->
+                <a class="btn" href="{% url 'logout' %}"><p class="nav-link2 me-3">LOG_OUT</p></a>
+                {% else %}
+                <a class="btn" href="{% url 'login' %}"><p class="nav-link2 me-3">LOG_IN</p></a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" style="padding-top: 100px;">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} mt-3">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+
+        {% block content %}
+        {% endblock %}
+    </div>
+
+
+<!-- WhatsApp Floating Button -->
+<a href="https://wa.me/91XXXXXXXXXX" target="_blank" class="whatsapp-float" title="Chat with us on WhatsApp">
+  <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="WhatsApp" width="55" height="55">
+</a>
+
+
+
+
+
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+
+
+</body>
+</html>

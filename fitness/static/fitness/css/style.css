@@ -1,0 +1,476 @@
+/* navbar */
+
+.navbar {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
+  z-index: 1030; 
+}
+
+
+
+
+
+.main_logo {
+  font-size: 40px;
+  color: rgb(26, 40, 47);
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 100;
+  letter-spacing: 0px;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: logoFadeUp 1.5s ease-out forwards;
+}
+
+.logo-highlight {
+  color: rgb(0, 112, 58);
+  font-size: 50px;
+  font-weight: 700;
+
+  text-shadow: 0 0 8px rgba(0, 255, 0, 0.4);
+}
+
+/* Animation */
+@keyframes logoFadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+
+
+.nav-link2{
+    color: rgb(0, 112, 58);
+    font-family:'Times New Roman', Times, serif;
+    font-size: 20px;
+    padding-top: 10px;
+}
+
+.nav-item {
+    transition: all 0.3s ease; 
+}
+
+.nav-item:hover {
+    transform: translateY(-5px);  
+    
+    
+}
+
+.nav-item:hover a.nav-link {
+    color: #00ff11 !important;
+}
+
+.video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    
+    text-align: center;
+    margin-top: 25%;
+    
+}
+
+/* the video text */
+
+.welcome-heading {
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-weight: 800;
+    font-size: 50px;
+    letter-spacing: 2px;
+    color: #002c0f;
+    
+
+}
+
+.welcome-subtext {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    color: white;
+    
+}
+
+.main_button {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    font-weight: 600;
+    padding: 14px 32px;
+    font-size: 16px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    border: none;
+    letter-spacing: 2px;
+}
+
+.main_button:hover {
+    background-color: rgb(99, 82, 82);
+    color: white;
+    transform: translateY(-2px);
+    transition: all 0.3s ease-in-out; 
+    border: none;
+
+}
+
+/* home.html/sction_two-Moves list */
+
+.moves{
+    color: black;
+    font-size: 50px;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    letter-spacing: 3px;
+}
+
+.submove{
+    color: black;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    font-weight: 100;
+}
+
+.description-box {
+    text-align: justify;
+    padding: 15px 20px;
+    border-radius: 10px;
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    height: 400px;
+    overflow: auto;
+}
+
+.container .row h5 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1a1a1a;
+  letter-spacing: 1px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+
+.container .row P {
+  font-size: 15x;
+  font-weight: 500;
+  color: #0c5024;
+  
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* instructors area */
+
+.moves, .submove {
+  color: #000; /* or any visible color */
+  z-index: 1;
+}
+
+.instro_btn{
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    letter-spacing: 2px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    border-radius: 4px;
+    background-color: white;
+}
+.instro_btn:hover{
+    background-color: #483b3b;
+    color: white;
+}
+
+.instructor-section{
+    position: relative;
+    top: -250px;
+}
+
+.scroll-container {
+  position: relative;
+}
+
+.scroll-gradient-left,
+.scroll-gradient-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 40px;
+  pointer-events: none; /* allow scroll through */
+  z-index: 2;
+}
+
+
+.scroll-wrapper::-webkit-scrollbar {
+  height: 32px; /* Increase height */
+}
+
+.scroll-wrapper::-webkit-scrollbar-track {
+  background: #e3dfdf; /* Light background for the track */
+  border-radius: 10px;
+}
+
+.scroll-wrapper::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #2d202c, #214529); /* Stylish thumb color */
+  border-radius: 10px;
+  border: 2px solid #f1f1f1; /* Optional border for thumb */
+}
+
+.scroll-wrapper::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #120b3d, #483531);
+}
+
+
+
+.instructor-card {
+  min-width: 150px;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  
+}
+
+.instructor-img {
+  width: 420px;
+  height: 320px;
+  object-fit: cover;
+  border: 3px solid grey;
+  position: relative;
+  top: 0px;
+}
+
+.mt-2{
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 20px;
+}
+
+
+/* classes booking field  */
+
+.custom-img {
+  width: 100%;      
+  max-width: 350px;  
+  height: auto;  
+  opacity: 0.7;  
+}
+.class_head{
+    text-align: center;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-size: 30px;
+    color: #0c5024;
+    font-weight: 500;
+}
+
+.class_head_dec{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: medium;
+    color: #0c5024;
+    text-align: center;
+    position: relative;
+    
+   
+}
+
+.btn_classes_booking {
+    padding: 10px 20px;
+    position: relative;
+    top: -70px;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: #000000;
+    background-color: transparent; 
+    border: 1px solid rgb(37, 62, 45); 
+    outline: none; 
+    z-index: 1;
+    letter-spacing: 2px;
+    border-radius: 6px;
+}
+
+.btn_classes_booking:hover {
+    background-color: #1a1a1a;
+    color: white;
+    cursor: pointer;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+
+
+.wellness_img{
+    position: relative;
+    left: 40px;
+    width: 50%;
+    height: 40%px;
+    
+}
+
+.wellness_dec{
+    position: relative;
+    left: 40%;
+    top: -460px;
+}
+
+.wellness_dec h1{
+    font-size: 50px;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.wellness_dec p{
+    font-size: 20px;
+    color: grey;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.wellness_img_two{
+    position: relative;
+    width: 250px;
+    left: 57%;
+    top: -430px;
+    
+}
+
+/* section6*/
+
+.bottom_img{
+    position: relative;
+    top: -200px;
+
+}
+
+
+
+.sub_trail{
+    position: relative;
+    top: 120px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    letter-spacing: 4px;
+
+
+}
+
+
+
+
+
+.freetrail {
+  background-color: rgba(0, 0, 0, 0.7);  /* Black with 70% opacity */
+  color: white;
+  width: 650px;
+  height: 550px;
+  text-align: center;
+  position: relative;
+  top: -850px;
+  left: 120px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(1px); 
+}
+
+
+.sub_trail button {
+  background-color: #ffffff;
+  color: #000;
+  padding: 15px 40px;
+  border-radius: 10px;
+  border: none;
+  font-weight: 600;
+  letter-spacing: 2px;
+  transition: all 0.3s ease-in-out;
+}
+
+.sub_trail button:hover {
+  background-color: #1a1a1a;
+  color: #fff;
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+
+
+
+
+.social-icons a {
+  text-decoration: none;
+}
+
+.footer_area{
+    position: relative;
+    top: -690px;
+}
+
+.footer_moveway{
+    background-color:none;
+    color: rgb(0, 0, 0);
+    width: 400px;
+    left: 250px;
+    position: relative;
+    top: 40px;
+}
+
+.sub_footer_moveaway{
+    text-align: left;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    letter-spacing: 1.5px;
+    font-size:20px;
+}
+
+.footer_links{
+   position: relative;
+   left: 800px;
+   top: -150px;
+}
+.mb-0{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
+    padding-top: 30px;
+}
+
+footer,
+.footer_area {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+body {
+  margin-bottom: 0;
+}
+
+
+/* whatsapp icon */
+
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right:  20px;
+    z-index: 9999;
+    background-color: transparent;
+}
+
+.whatsapp-float img {
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.whatsapp-float:hover img {
+    transform: scale(1.1);
+}
+
+/* yoga booking table background img */
+
+.yoga-section {
+    background-image: url('../images/bottom_img.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+

@@ -1,0 +1,68 @@
+{% extends 'fitness/base.html' %}
+{% load custom_filters %}
+{% load static %}
+{% block content %}
+
+
+
+
+
+
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background: url("{% static 'fitness/images/bottom_img.jpg' %}") no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+  }
+
+  .login-overlay {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card {
+    background-color: rgba(255, 255, 255, 0.9); /* semi-transparent card */
+  }
+</style>
+
+
+
+
+
+<section class="container my-5" style="padding-top: 150px;">
+  <div class="row justify-content-center">
+    <div class="col-lg-6 col-md-8 bg-white p-5 rounded-4 shadow-lg">
+      <h2 class="text-center mb-3 text-success fw-bold" style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif";>
+        💃 Book Your Zumba Class
+      </h2>
+      <p class="text-muted text-center mb-4">
+        Get ready to dance, sweat, and have fun! Reserve your slot now.
+      </p>
+
+      <form method="post" novalidate>
+        {% csrf_token %}
+
+        <div class="form-floating mb-3">
+          <input type="text" name="name" class="form-control" id="zumbaName" placeholder="Your Name" required>
+          <label for="zumbaName">Your Name</label>
+        </div>
+
+        <div class="form-floating mb-4">
+          <input type="email" name="email" class="form-control" id="zumbaEmail" placeholder="name@example.com" required>
+          <label for="zumbaEmail">Email Address</label>
+        </div>
+
+        <div class="d-grid">
+          <button type="submit" class="btn btn-success btn-lg rounded-pill">
+            🎶 Confirm Booking
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock %}

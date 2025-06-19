@@ -1,0 +1,62 @@
+{% extends 'fitness/base.html' %}
+{% load custom_filters %}
+{% load static %}
+{% block content %}
+
+
+
+
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background: url("{% static 'fitness/images/bottom_img.jpg' %}") no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+  }
+
+  .login-overlay {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card {
+    background-color: rgba(255, 255, 255, 0.9); /* semi-transparent card */
+  }
+</style>
+
+<div class="container my-5" style="padding-top: 150px;">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h2 class="text-center mb-4 text-success">📝 Register</h2>
+
+          <form method="post" novalidate action="{% url 'home'%}">
+            {% csrf_token %}
+            {% for field in form %}
+              <div class="mb-3">
+                <label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field|add_class:"form-control" }}
+                {% if field.errors %}
+                  <div class="text-danger small">{{ field.errors|striptags }}</div>
+                {% endif %}
+              </div>
+            {% endfor %}
+
+            <div class="d-grid">
+              <button type="submit" class="btn btn-success">Create Account</button>
+            </div>
+          </form>
+
+          <div class="text-center mt-3">
+            <a href="{% url 'login' %}" class="text-decoration-none">Already have an account? <strong>Login</strong></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
