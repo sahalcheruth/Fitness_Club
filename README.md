@@ -26,9 +26,20 @@ A timezone-aware Django-based web application that allows clients to book Yoga, 
 
 ---
 
+## 📮 Sample API Requests (via cURL)
+
+### 🔹 Get All Available Classes
+
+```bash
+curl http://127.0.0.1:8000/api/classes/
+
+
+
 ##  Setup Instructions
 
 ### 1. Clone the Repository
 ```bash
 git clone https://github.com/sahalcheruth/Fitness_Club
 cd fitness_studio
+
+
